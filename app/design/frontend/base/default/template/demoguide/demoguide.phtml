@@ -1,0 +1,211 @@
+﻿<?php
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Demoguide
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+/**
+ * Demoguide template
+ * 
+ * @see Magestore_Demoguide_Block_Demoguide
+ */
+?>
+<?php $demoguideModuleEnable = Mage::helper('demoguide')->getModuleEnable(); ?>
+<?php if ($demoguideModuleEnable): ?>
+    <?php
+    $extensionName = Mage::helper('demoguide')->getExtensionName();
+    $urlFrontendDemo = Mage::helper('demoguide')->getUrlFrontendDemo();
+    $shortDesFrontendDemo = Mage::helper('demoguide')->getShortDesFrontendDemo();
+    $urlFrontendSanboxDemo = Mage::helper('demoguide')->getUrlFrontendSanboxDemo();
+    $urlBackendSanboxDemo = Mage::helper('demoguide')->getUrlBackendSanboxDemo();
+    $shortDesBackendSandboxDemo = Mage::helper('demoguide')->getShortDesBackendSandboxDemo();
+    ?>
+    <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> -->
+    <script type="text/javascript" src="<?php echo $this->getJsUrl() . 'magestore/jquery-1.10.1.min.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->getJsUrl() . 'magestore/jquery.cookie.js'; ?>"></script>
+    <div class="panel"><div class='c-panel'>
+            <?php $color = Mage::getStoreConfig('demoguide/general/theme_color');
+                if(!$color) $color = '#2784b2';
+                if(substr($color, 0,1) != '#') $color = '#'.$color; //add # to start string
+            ?>
+            <h3 style="border:1px solid <?php echo $color; ?>; background-color: <?php echo $color; ?>;">
+                <?php echo ($extensionName)? $extensionName : 'Demo Guide'; ?><a class="close" href="javascript:void(0)" onclick="close()">&nbsp;</a>
+            </h3>
+            <div class="content">
+                <!--<div class="content-top">
+                    <div class='n-content'>
+                        <h4><?php //echo $this->__('Live Demo'); ?></h4>
+                        <p><?php //echo $this->__('Frontend'); ?>: <a href='<?php //echo $urlFrontendDemo; ?>' target='_blank' ><?php //echo $this->__('Try me'); ?></a> </p>
+                    </div>
+                    <div class='n-content'>		
+                        <h4><?php //echo $this->__('Sandbox'); ?></h4>
+                        <p><?php //echo $this->__('Frontend'); ?>: <a href='<?php //echo $urlFrontendSanboxDemo; ?>' target='_blank' ><?php //echo $this->__('Try me'); ?></a></p>
+                        <p><?php //echo $this->__('Backend'); ?>: <a href='<?php //echo $urlBackendSanboxDemo; ?>' target='_blank' ><?php //echo $this->__('Try me'); ?></a></p>
+                    </div>
+                </div>-->
+                <div class="content-middle">
+                    <p><?php echo $shortDesFrontendDemo; ?></p>
+                </div>
+                <div class="content-bottom">
+                    <style type="text/css">
+                        .onoffswitch-inner:before,.onoffswitch-innerz:before{
+                            background-color: <?php echo $color; ?>!important;
+                        }
+                    </style>
+                    <div style="clear:both;"></div>
+                    <?php
+                    $demotipEnable = Mage::getStoreConfig('demotip/general/enable');
+                    if ($demotipEnable):
+                        ?>
+                        <h4 style='width:260px'><?php echo $this->__('TOOL TIP'); ?></h4>	
+                        <?php
+                        $cookieDemotip = Mage::getModel('core/cookie')->get('visitor_turn_onoff');
+                        if ($cookieDemotip != 1)
+                            $cookieDemotip = 0;
+                        if ($demotipEnable && $cookieDemotip != 1):
+                            ?>
+                            <?php echo $this->__('All pages'); ?><div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                                <label class="onoffswitch-label" for="myonoffswitch">
+                                    <div id='on-tooltip-inner-all' class="onoffswitch-inner"></div><div id='off-tooltip-inner-all' class="onoffswitch-switch"></div>
+                                </label>
+                            </div><div style="clear:both;"></div><br/>
+                            <?php echo $this->__('Current page'); ?><div class="onoffswitchz">
+                                <input type="checkbox" name="onoffswitchz" class="onoffswitch-checkboxz" id="myonoffswitchz" checked>
+                                <label class="onoffswitch-labelz" for="myonoffswitchz">
+                                    <div id='on-tooltip-inner' class="onoffswitch-innerz"></div><div id='off-tooltip-inner' class="onoffswitch-switchz"></div>
+                                </label>
+                            </div>
+                            <?php
+                        else:
+                            ?>
+                            <?php echo $this->__('All pages '); ?><div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                                <label class="onoffswitch-label" for="myonoffswitch">
+                                    <div id='on-tooltip-inner-all' class="onoffswitch-inner"></div><div id='off-tooltip-inner-all' class="onoffswitch-switch"></div>
+                                </label>
+                            </div><div style="clear:both;"></div><br/>
+                            <?php echo $this->__('Current page '); ?><div class="onoffswitchz">
+                                <input type="checkbox" name="onoffswitchz" class="onoffswitch-checkboxz" id="myonoffswitchz">
+                                <label class="onoffswitch-labelz" for="myonoffswitchz">
+                                    <div id='on-tooltip-inner' class="onoffswitch-innerz"></div><div id='off-tooltip-inner' class="onoffswitch-switchz"></div>
+                                </label>
+                            </div>
+                        <?php endif; ?>
+                        <p><?php echo $shortDesBackendSandboxDemo; ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <?php
+        $url_image_trigger = Mage::getBaseUrl('media').'magestore/demoguide/'.Mage::getStoreConfig('demoguide/general/trigger_image'); 
+        if(!Mage::getStoreConfig('demoguide/general/trigger_image')){
+            $url_image_trigger = $this->getSkinUrl('css/magestore/demoguide/images/demoguide.png');
+        }
+    ?>
+    <a class="trigger" style="background: url(<?php echo $url_image_trigger ?>) no-repeat 0 0;" href="#"><?php echo $this->__('Demo Guide'); ?></a>
+
+    <script type="text/javascript">
+        var $po = jQuery.noConflict();
+        var statusOnOff = '<?php echo $cookieDemotip; ?>';
+        var statusOnOffAllPage = '<?php echo $cookieDemotip; ?>';
+        function turnonoffdemotipallpage() {
+            if ($po(".demotip-wrap").length > 0) {
+                $po(".demotip-wrap").css('display', 'block');
+            }
+            
+            //if ($po.cookie("visitor_turn_onoff")) {
+             //   $po.removeCookie("visitor_turn_onoff");
+            //} else {
+            //    $po.cookie("visitor_turn_onoff", 1, {expires: 2});	//visitor_turn_onoff = 1 to disable demotip
+            //}
+            if ($po(".demotip").length > 0) {
+                if (statusOnOffAllPage == '1') {
+                    $po(".demotip").css('display', 'block');
+                } else {
+                    $po(".demotip").css('display', 'none');
+                }
+            } else {
+                //var enableDemotip = '<?php echo $demotipEnable; ?>';
+                //if (enableDemotip == '1') {
+                    //location.reload();
+                //}
+            }
+            if(statusOnOffAllPage == '1'){
+                statusOnOffAllPage = '0'; //0 is showing
+                if ($po.cookie("visitor_turn_onoff")) {
+                    $po.removeCookie("visitor_turn_onoff");
+                }
+            }else{
+                statusOnOffAllPage = '1'; //1 is not  showing
+                $po.cookie("visitor_turn_onoff", 1, {expires: 2});	//visitor_turn_onoff = 1 to disable demotip
+            }
+        }
+        function turnonoffdemotipcurrentpage() {
+            if ($po(".demotip").length > 0) {
+                if (statusOnOff == '1') {
+                    $po(".demotip").css('display', 'block');
+                } else {
+                    $po(".demotip").css('display', 'none');		
+                }
+            }
+            if(statusOnOff == '1'){
+                statusOnOff = '0'; //0 is showing
+            }else{
+                statusOnOff = '1'; //1 is not  showing
+            }
+        }
+        $po(document).ready(function() {
+            $po(".trigger").click(function() {
+                $po(".panel").toggle("fast");
+                $po(this).toggleClass("active");
+                return false;
+            });
+
+            $po("#off-tooltip-inner-all").click(function() {
+                if ($po(".demotip")) {
+                    turnonoffdemotipallpage();
+                }
+            });
+            $po("#on-tooltip-inner-all").click(function() {
+                if ($po(".demotip")) {
+                    turnonoffdemotipallpage();
+                }
+            });
+            $po("#off-tooltip-inner").click(function() {
+                if ($po(".demotip")) {
+                    turnonoffdemotipcurrentpage();
+                }
+            });
+            $po("#on-tooltip-inner").click(function() {
+                if ($po(".demotip")) {
+                    turnonoffdemotipcurrentpage();
+                }
+            });
+            // var t_op = $po(".main").offset().top;
+
+            // $po(".panel").css({
+            // top: t_op+'px'
+            // });
+            $po('.close').click(function() {
+                $po(".panel").hide();
+            });
+        });
+    </script>
+<?php endif; ?>

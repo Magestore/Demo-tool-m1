@@ -1,0 +1,47 @@
+<?php
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category 	Magestore
+ * @package 	Magestore_Demotip
+ * @copyright 	Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license 	http://www.magestore.com/license-agreement.html
+ */
+
+ /**
+ * Demotip Resource Collection Model
+ * 
+ * @category 	Magestore
+ * @package 	Magestore_Demotip
+ * @author  	Magestore Developer
+ */
+class Magestore_Demotip_Model_Mysql4_Demotip_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+{
+	public function _construct(){
+		parent::_construct();
+		$this->_init('demotip/demotip');
+	}
+        public function joinLinks() {
+        if ($this->hasFlag('join_links') && $this->getFlag('join_links'))
+            return $this;
+        $this->setFlag('join_links', true);
+        $this->getSelect()->group('main_table.demotip_id')->joinLeft(
+                array('links' => $this->getTable('demotip/link')), 'main_table.demotip_id = links.demotip_id', array(
+            'link' 
+                )
+        );
+        return $this;
+    }
+        
+}

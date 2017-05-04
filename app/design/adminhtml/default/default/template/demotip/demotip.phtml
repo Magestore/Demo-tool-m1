@@ -1,0 +1,77 @@
+<?php
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category 	Magestore
+ * @package 	Magestore_Demotip
+ * @copyright 	Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license 	http://www.magestore.com/license-agreement.html
+ */
+/**
+ * demotip template
+ * 
+ */
+?>
+<script type="text/javascript">
+<?php if (Mage::helper('demotip')->isShowDemotip()): ?>
+        var isDisplay = true;
+<?php else: ?>
+        var isDisplay = false;
+<?php endif; ?>
+<?php $urlAction = $this->getThisUrlAction(); ?>
+<?php $collectionUrlLink = Mage::helper('demotip')->getModelLink(); ?>
+<?php $demotipIds = $this->megerDemoTipId($urlAction, $collectionUrlLink); ?>
+<?php foreach ($demotipIds as $demotipId): ?>
+    <?php $colletionDemotip = Mage::helper('demotip')->getModelDemotip($demotipId); ?>
+    <?php foreach ($colletionDemotip as $demotip): ?>
+            var demotip_message = <?php echo Mage::helper('demotip')->endCodeJs($demotip->getDemotipContent()); ?>;
+            var demotiop_html = '<div id="demotip<?php echo $demotipId ?>">'
+                    + '<div class="demotip" style="top: <?php echo $demotip->getTop(); ?>px; left: <?php echo $demotip->getLeft(); ?>px">'
+                    + '<div class="demotip-box" style="width:100%; height:auto; max-width:400px; min-width:200px;">'
+                    + '<div class="demotip-message">'
+                    + '<span class="demotip-message-span">'
+                    + demotip_message.html
+                    + '</span>'
+                    + '</div>'
+                    + '<div class="demotip-button-close">'
+                    + '<a class="demotip-button-close-img" onclick="demotip<?php echo $demotipId ?>.hide();" href="javascript:void(0);">'
+                    + '</a>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="demotip-image" <?php echo Mage::helper('demotip')->getCssForImage($demotip->getImageOption()); ?>>'
+                    + '</div>'
+                    + '</div>'
+                    + '</div>';
+            try {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = demotiop_html;
+                newDiv.className = 'demotip-wrap';
+                if (!isDisplay)
+                    newDiv.setStyle('display:none');
+                var relativeId = '';
+            <?php if ($demotip->getRelativeId() != ''): ?>
+                relativeId = '<?php echo $demotip->getRelativeId() ?>';
+                $(relativeId).setStyle('position:relative');
+            <?php endif; ?>
+                if (relativeId && $(relativeId) != null){
+                    $(relativeId).appendChild(newDiv);
+                }else{
+                    $$('body')[0].appendChild(newDiv);
+                }
+            } catch (err) {
+            }
+
+    <?php endforeach; ?>
+<?php endforeach; ?>
+</script>

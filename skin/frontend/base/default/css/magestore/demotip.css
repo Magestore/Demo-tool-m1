@@ -1,0 +1,52 @@
+.demotip{
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    position: absolute;	
+    z-index : 1000;
+    
+}
+.demotip-box{
+    box-shadow: 0 0 5px #333;	
+    background: url(demotip/bkg-tip.png) repeat ;
+    position: relative;
+    border-radius:5px;
+    padding:4px 10px;
+    
+}
+.demotip-message{	
+}
+h5.demotip-name{
+    float: left;
+    margin: 0 0 5px;
+    padding: 0 0 5px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+.demotip-message-span{
+    padding : 0;
+    color:#1E3759;
+    text-align: justify;
+}
+.demotip-button-close-img{
+
+    display: block;
+    float: right;
+    height: 20px;
+    text-decoration:none;
+    position: absolute;
+    right: -5px;
+    top : -4px;
+    color: #294D7A ;
+}
+.demotip-button-close{
+    width: auto;
+
+}
+.demotip-image{
+    position: absolute;	
+    z-index : 1000;
+    height: 55px;
+    width: 100%;
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Demoguide
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <modules>
+        <Magestore_Demoguide>
+            <version>0.1.0</version>
+        </Magestore_Demoguide>
+    </modules>
+    <frontend>
+        <routers>
+            <demoguide>
+                <use>standard</use>
+                <args>
+                    <module>Magestore_Demoguide</module>
+                    <frontName>demoguide</frontName>
+                </args>
+            </demoguide>
+        </routers>
+        <layout>
+            <updates>
+                <demoguide>
+                    <file>demoguide.xml</file>
+                </demoguide>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Demoguide>
+                    <files>
+                        <default>Magestore_Demoguide.csv</default>
+                    </files>
+                </Magestore_Demoguide>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <demoguideadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magestore_Demoguide</module>
+                    <frontName>demoguideadmin</frontName>
+                </args>
+            </demoguideadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <demoguide>
+                    <file>demoguide.xml</file>
+                </demoguide>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Demoguide>
+                    <files>
+                        <default>Magestore_Demoguide.csv</default>
+                    </files>
+                </Magestore_Demoguide>
+            </modules>
+        </translate>
+    </adminhtml>   
+    <global>
+        <blocks>
+            <demoguide>
+                <class>Magestore_Demoguide_Block</class>
+            </demoguide>
+        </blocks>
+        <helpers>
+            <demoguide>
+                <class>Magestore_Demoguide_Helper</class>
+            </demoguide>
+        </helpers>
+        <models>
+            <demoguide>
+                <class>Magestore_Demoguide_Model</class>
+            </demoguide>
+        </models>
+    </global>
+    <default>
+        <demoguide><!-- tag of the system.xml section -->
+            <general><!-- tag of the system.xml group -->
+                <des_frontenddemo><![CDATA[We configure settings for frontend demo already. All functions are enabled so you can see how our extension really shows to website’s viewers.<br/><br/>
+To explore more, please play the sandbox. Changes you make in sandbox backend will be applied in sandbox frontend.]]></des_frontenddemo><!-- tag of the system.xml field -->
+            </general>
+        </demoguide>
+    </default>
+</config>

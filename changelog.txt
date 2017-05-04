@@ -1,0 +1,2 @@
+1. app\design\adminhtml\default\default\template\demoguide\demoguide.phtml
+2. app\design\frontend\base\default\template\demoguide\demoguide.phtml

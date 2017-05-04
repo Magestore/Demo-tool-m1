@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Demoguide
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <tabs>
+        <magestore translate="label">
+            <label>Magestore Extension</label>
+            <sort_order>400</sort_order>
+        </magestore>
+    </tabs>
+    <sections>
+        <demoguide translate="label" module="demoguide">
+            <class>separator-top</class>
+            <label>Demoguide</label>
+            <tab>magestore</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>299</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>        
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <extension_name translate="label">
+                            <label>Extension Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </extension_name>
+                        <url_frontenddemo translate="label">
+                            <label>URL frontend demo</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_frontenddemo>
+                        <des_frontenddemo translate="label">
+                            <label>Short Description frontend demo</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </des_frontenddemo>
+                        <url_frontendsanboxdemo translate="label">
+                            <label>URL frontend sandbox demo</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_frontendsanboxdemo>
+                        <url_backendsanboxdemo translate="label">
+                            <label>URL backend sandbox demo</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_backendsanboxdemo>
+                        <des_backendsanboxdemo translate="label">
+                            <label>Short Description backend sanbox demo</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </des_backendsanboxdemo>
+                        <!--thinlt-->
+                        <theme_color translate="label">
+                            <label>Frontend color for panel theme</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Default Color is #2784b2]]></comment>
+                        </theme_color>
+                        <theme_color_backend translate="label">
+                            <label>Backend color for panel theme</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Default Color is #91d33d]]></comment>
+                        </theme_color_backend>
+                        <trigger_image translate="label">
+                            <label>Upload menu image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">magestore/demoguide</upload_dir>
+                            <base_url type="media" scope_info="1">magestore/demoguide</base_url>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Allowed file types: jpeg, gif, png. <br/>width: 34px; height: 136px;]]></comment>
+                        </trigger_image>
+                    </fields>
+                </general>
+            </groups>
+        </demoguide>
+    </sections>
+</config>

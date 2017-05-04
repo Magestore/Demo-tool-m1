@@ -1,0 +1,51 @@
+<?php
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category 	Magestore
+ * @package 	Magestore_Demotip
+ * @copyright 	Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license 	http://www.magestore.com/license-agreement.html
+ */
+
+ /**
+ * Demotip Edit Tabs Block
+ * 
+ * @category 	Magestore
+ * @package 	Magestore_Demotip
+ * @author  	Magestore Developer
+ */
+class Magestore_Demotip_Block_Adminhtml_Demotip_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+{
+	public function __construct(){
+		parent::__construct();
+		$this->setId('demotip_tabs');
+		$this->setDestElementId('edit_form');
+		$this->setTitle(Mage::helper('demotip')->__('Demotip Information'));
+	}
+	
+	/**
+	 * prepare before render block to html
+	 *
+	 * @return Magestore_Demotip_Block_Adminhtml_Demotip_Edit_Tabs
+	 */
+	protected function _beforeToHtml(){
+		$this->addTab('form_section', array(
+			'label'	 => Mage::helper('demotip')->__('Demotip Information'),
+			'title'	 => Mage::helper('demotip')->__('Demotip Information'),
+			'content'	 => $this->getLayout()->createBlock('demotip/adminhtml_demotip_edit_tab_form')->toHtml(),
+		));
+		return parent::_beforeToHtml();
+	}
+}

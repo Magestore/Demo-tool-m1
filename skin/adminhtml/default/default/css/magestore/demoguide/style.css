@@ -1,0 +1,193 @@
+
+.panel{
+    position: fixed;
+    bottom: 2px;
+    left: 2px;
+    display: none;
+    background:#f9f9f9;
+    border:none;
+    width: 290px;
+    height: auto;
+    padding: 0;
+    z-index: 1001;
+    /*filter: alpha(opacity=85);
+    opacity: .85; */
+}
+.c-panel{
+    background: none;
+    width:100%;
+    display: block;
+    text-align:left;
+}
+.panel p{
+    margin: 0 15px 15px 0;
+    padding: 0;
+    text-align: justify;
+}
+.c-panel h3{
+    font:bold 16px/18px arial;
+    text-transform:none;
+    position:relative;
+    text-align:left;
+    color:#fff;
+    padding:10px 25px 10px 10px;
+    margin:0;
+    background-repeat: repeat-x;
+}
+.c-panel .content{
+    border-left: 2px solid #dfdfdf;
+    border-right: 2px solid #dfdfdf;
+    border-bottom: 2px solid #dfdfdf;
+    padding:10px 5px 10px 10px;
+    margin:0;
+    color: #636363;
+    font-family: OpenSans, Helvetica Neue, Verdana, Arial, sans-serif;
+}
+.n-content{
+    width: 135px;display:block;float:left;
+}
+.c-panel .content h4{
+    font:normal 12px/12px  arial;
+    color:#636363;width:125px;
+    text-transform:uppercase;
+    padding:5px 0;
+    text-shadow:0 0 #666;
+    margin: 0 0 15px;
+    font-weight: bold;
+}
+.panel .c-panel a.close{
+    width:19px;
+    height:17px;
+    background:url(images/close.png) no-repeat;
+    position:absolute;
+    right:10px;
+    top:10px;
+    text-decoration:none;
+    border:none;
+}
+.panel a, .panel a:visited{
+    margin: 0;
+    padding: 0;
+    color: #1470cc;
+    text-decoration: none;
+    font:normal 12px/12px arial;
+}
+.panel .c-panel .content .n-content p a{
+    font-weight: bold;
+}
+
+
+.panel a:hover, .panel a:visited:hover{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+a.trigger{
+    position: fixed;
+    text-decoration: none;
+    top: 35%; 
+    left: 0;
+    font-size: 14px;
+    letter-spacing:-1px;
+    font-family: verdana, helvetica, arial, sans-serif;
+    color:#fff;
+    padding: 10px 26px 10px 10px;
+    text-indent:-1000px;
+    overflow:hidden;
+    width:34px;
+    height:136px;
+    border:none;
+    display: block;
+    z-index:100;
+    /* transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg); */
+}
+
+
+
+/*.columns{
+    clear: both;
+    width: 330px;
+    padding: 0 0 20px 0;
+    line-height: 22px;
+}*/
+
+.colleft{
+    float: left;
+    width: 130px;
+    line-height: 22px;
+}
+
+.colright{
+    float: right;
+    width: 130px;
+    line-height: 22px;
+}
+/*---------------------------------------Style for enable/disable tool tip button--------------------------------*/
+.onoffswitch,.onoffswitchz {
+    position: relative; width: 60px;float:right;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox,.onoffswitch-checkboxz {
+    display: none;
+}
+.onoffswitch-label,.onoffswitch-labelz {
+    display: block; overflow: hidden; cursor: pointer;
+}
+.onoffswitch-inner,.onoffswitch-innerz {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after ,.onoffswitch-innerz:before, .onoffswitch-innerz:after  {
+    float: left; width: 58px; height: 24px; padding: 0; line-height: 24px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+
+}
+.onoffswitch-inner:before,.onoffswitch-innerz:before{
+    content: "ON";
+    padding-left: 2px;
+    background-color: #2784b2; color: #d9d9d9;
+}
+.onoffswitch-inner:after ,.onoffswitch-innerz:after{
+    content: "OFF";
+    padding-right: 2px;
+    background-color: #7e7e7e; color: #d9d9d9;
+    text-align: right;
+}
+.onoffswitch-switch,.onoffswitch-switchz {
+    width: 18px; height:18px; margin: 0px;
+    background: #ededed;
+    position: absolute; top: 3px; bottom: 0; right: 36px;
+    -moz-transition: all 0.3s ease-in 0s;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
+
+}
+.onoffswitch,.onoffswitchz{
+    margin-right:15px;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner,.onoffswitch-checkboxz:checked + .onoffswitch-labelz .onoffswitch-innerz {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch,.onoffswitch-checkboxz:checked + .onoffswitch-labelz .onoffswitch-switchz {
+    right: 3px;
+}
+/*----------------------------------Endl style for enable/disable tool tip button--------------------------------*/
+
+/*thinlt*/
+.panel .c-panel .content .content-top {
+    border-bottom: 2px solid #dfdfdf;
+    float: left;
+    margin-bottom: 14px;
+}
+
+.panel .c-panel .content .content-middle {
+    border-bottom: 2px solid #dfdfdf;
+    float: left;
+    margin-bottom: 14px;
+}
+

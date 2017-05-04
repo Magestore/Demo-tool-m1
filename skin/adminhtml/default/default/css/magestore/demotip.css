@@ -1,0 +1,44 @@
+.demotip{
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    position: absolute;	
+    z-index : 1000;
+    
+}
+.demotip-box{
+    background: url("demotip/bkg-tip.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333;
+    padding: 10px 20px;
+    position: relative;
+    
+}
+.demotip-message{
+    
+}
+.demotip-message-span{
+    color: #1e3759;
+    padding: 0;
+    text-align: justify;
+}
+.demotip-button-close-img{
+    background: url("demotip/button_close.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: -30px;
+    top : 2px;
+}
+/*.demotip-button-close{
+    width: auto;
+    padding-top : 15px;
+}*/
+.demotip-image{
+    position: absolute;	
+    z-index : 1000;
+    height: 48px;
+    width: 100%;
+}

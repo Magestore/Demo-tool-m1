@@ -1,0 +1,102 @@
+<?php
+	/**
+	 * Shop's menu template
+	*/
+?>
+<?php $_htmlId = $this->getElement()->getHtmlId() ?>
+<?php $_htmlClass = $this->getElement()->getClass() ?>
+<?php $_htmlName = $this->getElement()->getName() ?>
+<tr>
+	<td class="label"><?php echo $this->getElement()->getLabel() ?></td>
+	<td colspan="10" class="grid" width="470">
+		<table cellspacing="0" class="data border" id="<?php echo $_htmlName ?>_table">
+			<col/>			
+			<thead>
+				<tr class="headings">
+					<th><?php echo $this->__('Link Url') ?></th>														
+					<th><?php echo $this->__('Action') ?></th>					
+				</tr>
+			</thead>
+			<tbody id="<?php echo $_htmlId ?>_container"></tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td colspan="4" class="a-right"><?php echo $this->getAddButtonHtml() ?></td>
+				</tr>
+			</tfoot>
+		</table>
+<script type="text/javascript">
+//<![CDATA[
+var <?php echo $_htmlName ?>RowTemplate = '<tr>'
+	+ '<input type="hidden" name="<?php echo $_htmlName ?>[{{index}}][demotip_id]" id="<?php echo $_htmlName ?>_row_{{index}}_id" />'    
+	+ '<input type="hidden" name="<?php echo $_htmlName ?>[{{index}}][idlink]" id="<?php echo $_htmlName ?>_row_{{index}}_idlink" />' 	
+	+ '<td>'
+		+'<input class="<?php echo $_htmlClass ?>" type="text" name="<?php echo $_htmlName ?>[{{index}}][link]" id="<?php echo $_htmlName ?>_row_{{index}}_link" />'              
+	+ '</td>'                          
+	+ '<td class="last">'
+		+ '<input type="hidden" name="<?php echo $_htmlName ?>[{{index}}][dele]" class="delete" value="0" id="<?php echo $_htmlName ?>_row_{{index}}_delete" />'
+		+ '<button title="<?php echo $this->__("Delete") ?>" type="button" class="scalable delete icon-btn" id="<?php echo $_htmlName ?>_row_{{index}}_delete_button" onclick="return <?php echo $_htmlName ?>Control.deleteItem(event);">'
+			+ '<span><?php echo $this->__("Delete") ?></span>'
+		+ '</button>'
+	+ '</td>'
+	+ '</tr>';
+var <?php echo $_htmlName ?>Control = {
+	template: new Template(<?php echo $_htmlName; ?>RowTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', "")),
+	itemsCount: 1,
+	addItem: function(){
+		var data = {
+			id: 0,			            
+			index: this.itemsCount,
+            del: 0,
+			link : '',
+		};
+		if (arguments.length >= 4) {	
+            data.id = arguments[1];                        			                    
+            data.index = arguments[0];
+            data.del = arguments[2];
+			data.link = arguments[3];
+            this.itemsCount = data.index;
+		}
+		Element.insert($('<?php echo $_htmlId ?>_container'),{
+			bottom: this.template.evaluate(data)
+		});
+		$('<?php echo $_htmlName ?>_row_' + data.index + '_id').value = data.id;
+		$('<?php echo $_htmlName ?>_row_' + data.index + '_idlink').value =  this.itemsCount;
+		if (data.link != null){
+			$('<?php echo $_htmlName ?>_row_' + data.index + '_link').value = data.link;  
+		}
+		else $('<?php echo $_htmlName ?>_row_' + data.index + '_link').value = '';  
+		$('<?php echo $_htmlName ?>_row_' + data.index + '_delete').value = data.del;  
+        this.itemsCount++;
+	},
+	disableElement: function(el){
+		el.disabled = true;
+		el.addClassName('disabled');
+	},
+	deleteItem: function(event){
+		var tr = Event.findElement(event, 'tr');
+		if (tr){
+			Element.select(tr, '.delete').each(function(elem){elem.value='1'});
+			Element.select(tr, ['input','select']).each(function(elem){elem.hide()});
+			Element.hide(tr);
+			Element.addClassName(tr, 'no-display template');
+		}
+		return false;
+	}
+};
+<?php 
+$collection = $this->getValues($this->getRequest()->getParam('id'));
+
+foreach ($collection as $_item):?>
+<?php echo $_htmlName ?>Control.addItem('<?php echo $_item->getId()?>', '<?php echo $_item->getData('demotip_id')?>', '<?php echo $_item->getData('dele')?>', '<?php echo $_item->getData('link')?>');
+<?php endforeach;?>
+//]]>
+</script>
+		<p class="note">
+		<span><?php echo Mage::helper('demotip')->__('Example : Link http://haitest.com/MegaMenu/vresion0.2.0/1.5/magento/index.php/customer/account/login/ ');?>
+			<br/> <?php echo Mage::helper('demotip')->__('You choose /customer/account/login/');?>
+		<br/> <?php echo Mage::helper('demotip')->__('If you enter is "default or adminhtml_default", It will show at all front-end pages or back-end pages') ?>
+		</span>
+		</p>
+	</td>	
+</tr>
